@@ -10,13 +10,17 @@ class connexio{
         $this->host="localhost";
         $this->db="pt3";
         $this->user="marcm";
-        $this->password="root";
+        $this->passwd="root";
     }
     
     function DB_Open(){
+       
         $this->conn = mysqli_connect($this->host, $this->user, $this->passwd);
+        
         if ($this->conn){
+           
             if (! mysqli_select_db($this->conn, $this->db)){
+               
                 $status = mysqli_error();
             } else {
                 $status=0;
@@ -24,6 +28,7 @@ class connexio{
         } else {
             $status = mysqli_error();
         }
+
         return($status);
     }
     
@@ -38,7 +43,9 @@ class connexio{
     
     function DB_Select($strSelect){
         $this->DB_Open();
+        
         $result = mysqli_query($this->conn,$strSelect);
+        
         if($result){
             if(mysqli_num_rows($result) >0){
                 return ($result);

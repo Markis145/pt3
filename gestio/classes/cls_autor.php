@@ -12,10 +12,11 @@ class autor extends connexio{
     
     function inicialitza ($id){
         $this->aut_idautor = $id;
+        //echo "fora";
         if ($this->aut_idautor == 0){
             $this->aut_autor = "";
         } else {
-            $sql="SELECT AUTORS.AUT_IDAUTOR, AUTORS.AUT_AUTOR FROM AUTORS WHERE AUTORS.AUT_IDAUTOR=".$id.")";
+            $sql="SELECT AUTORS.AUT_IDAUTOR, AUTORS.AUT_AUTOR FROM AUTORS WHERE (AUTORS.AUT_IDAUTOR=".$id.")";
             $rs=$this->DB_Select($sql);
             $rs=$this->DB_Fetch($rs);
             $this->aut_autor = $rs['AUT_AUTOR'];
@@ -61,7 +62,7 @@ class autor extends connexio{
         $sql_id="SELECT max(AUT_IDAUTOR) AS AUT_IDAUTOR FROM AUTORS";
         $rs_id=$this->DB_Select($sql_id);
         $rs_id=$this->DB_Fetch($rs_id);
-        $this->aut_idautor=$rs.id['AUT_IDAUTOR'];
+        $this->aut_idautor=$rs_id['AUT_IDAUTOR'];
         return $this->aut_idautor;
     }
     
