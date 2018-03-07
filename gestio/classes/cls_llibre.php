@@ -12,11 +12,9 @@ class llibre extends connexio{
     
     function inicialitza ($id){
         $this->lli_idllibre = $id;
-        echo "fora";
         if ($this->lli_idllibre == 0){
             $this->lli_llibre = "";
         } else {
-            echo "dins";
             $sql="SELECT LLIBRES.LLI_IDLLIBRE, LLIBRES.LLI_LLIBRE FROM LLIBRES WHERE (LLIBRES.LLI_IDLLIBRE=".$id.")";
             $rs=$this->DB_Select($sql);
             $rs=$this->DB_Fetch($rs);
