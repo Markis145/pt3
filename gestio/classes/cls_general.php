@@ -21,6 +21,22 @@ class general extends connexio{
         }
         return $items;
     }
+    
+    function llistat_llibres(){
+        
+        $sql="SELECT LLI_IDLLIBRE FROM LLIBRES";
+        $rs=$this->DB_Select($sql);
+        $i=1;
+       
+        while ($rs_f=$this->DB_Fetch($rs)){
+        
+            $lli=new llibre();
+            $lli->inicialitza($rs_f['LLI_IDLLIBRE']);
+            $items[$i]=serialize($lli);
+            $i=$i+1;
+        }
+        return $items;
+    }
 }
 
 
