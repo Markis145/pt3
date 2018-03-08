@@ -51,6 +51,3 @@ $gen = new general();
   </table>
 </body>
 </html>
-
-
-

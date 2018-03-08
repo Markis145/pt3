@@ -1,14 +1,14 @@
 <?php
-$ruta = "../../";
-include $ruta.'gestio/classes/cls_includes.php';
-
-$idaut = $_GET['idaut'];
-
-$aut = new autor();
-$aut ->inicialitza($idaut);
-
+    $ruta="../../";
+    include $ruta."gestio/classes/cls_includes.php";
+    
+    //echo "sdfjhsdjfhsd=".$_GET['idaut'];
+    $idaut = $_GET['idaut'];
+    $aut = new autor();
+    $aut->inicialitza($idaut);
+    
+    
 ?>
-
 <html>
 <head>
 <title>Vista Inicial</title>
@@ -21,7 +21,7 @@ $aut ->inicialitza($idaut);
 		}
 		else {
 				if (document.formulari.f_submit.value=="Aceptar") {
-					if (confirm("S'emmagatzemaran els canvis sol·licitats. Continuar?")) {
+					if (confirm("S'emmagatzemaran els canvis sol�licitats. Continuar?")) {
 						document.formulari.h_accio.value=document.formulari.f_submit.value;
 						document.formulari.f_submit.value='Modificar';
 						document.formulari.submit();					
@@ -33,7 +33,7 @@ $aut ->inicialitza($idaut);
 				}
 				else {
 								
-					if (confirm("S'emmagatzemaran els canvis sol·licitats. Continuar?")) {
+					if (confirm("S'emmagatzemaran els canvis sol�licitats. Continuar?")) {
 						document.formulari.h_accio.value=document.formulari.f_submit.value;
 						document.formulari.submit();
 					}			
@@ -41,11 +41,10 @@ $aut ->inicialitza($idaut);
 						document.formulari.f_submit.value='Modificar';
 						document.formulari.autor.value=document.formulari.h_autor.value;
 						document.formulari.autor.disabled=true;
-
 					}//tanca l'else
 			}//tanca l'else		
 		}//tanca l'else
-	}//tanca la funcio
+	}//tanca la funci�
 	
 	function delete_form() {
 		if (document.formulari.f_delete.value=='Esborrar'){
@@ -67,7 +66,7 @@ $aut ->inicialitza($idaut);
 <body>
 <form name="formulari" action="<?=$ruta?>gestio/controladors/c_autor.php?accio=v&idaut=<?=$idaut?>" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="h_accio" id="h_accio" value="">
-        <input type="hidden" name="h_autor" id="h_autor" value="<?=$aut ->get_aut_autor()?>">
+        <input type="hidden" name="h_autor" id="h_autor" value="<?=$aut->get_aut_autor()?>">
 	<table width="100%">
 		<tr>
 			<td colspan="7" class="sub_titol">Informaci&oacute; de l' autor</td>
@@ -75,15 +74,16 @@ $aut ->inicialitza($idaut);
 		<tr>
 			<td width="3">&nbsp;</td>
 			<td width="115" class="etiqueta">Identificador</td>
-			<td width="126"><input name="id" type="text" disabled class="input" value="<?=$aut->get_aut_idautor()?>" size="75"></td>
+			<td width="126"><input name="id" type="text" disabled class="input" value="<?=$aut->get_aut_idautor()?>">			</td>
 			<td width="113">&nbsp;</td>
-			<td width="293">&nbsp;</td>			
+			<td width="293">&nbsp;		  </td>			
 		    <td width="94" align="center">&nbsp;</td>
 		</tr>
 		<tr>
 		  <td>&nbsp;</td>
 		  <td class="etiqueta">Autor</td>
-		  <td colspan="4"><input name="autor" type="text" class="input" id="autor" value="<?=$aut->get_aut_autor()?>" size="75"</td>
+		  <td colspan="4"><input name="autor" type="text" class="input" id="autor" value="<?=$aut->get_aut_autor()?>" size="75">
+	      </td>
 		</tr>
 	</table>
 	<table width="100%">
@@ -93,14 +93,14 @@ $aut ->inicialitza($idaut);
 		<tr>
 		  <td width="1%">&nbsp;</td>
 		  <td align="right" class="etiqueta">
-                      <input type="button" name="f_submit" value="<?=$aut->textSubmit()?>" class="input" onClick="javascript:submit_form()">
-                      <input type="button" name="f_delete" value="<?=$aut->textDelete()?>" class="input" onClick="javascript:submit_form()">
-		  </td>
-		  <td width="1%">&nbsp;</td>
+		    <input type="button" name="f_submit" value="<?=$aut->textSubmit()?>" class="input" onClick="javascript:submit_form()">
+		    <input type="button" name="f_delete" value="<?=$aut->textDelete()?>" class="input" onClick="javascript:delete_form()">
+		  </td>submit
+		  <td width="1%">&nbsp;</td>submit
 	  </tr>			
 					
 	</table>	
-	
+	submit
 </form>
 </body>
 </html>
